@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <description>Api para interaccion con el dominio funcional Usuario/Cliente</description>
+    <display-name>Producto Api</display-name>
+    <servlet>
+        <servlet-name>resteasy-servlet-productos</servlet-name>
+        <servlet-class>
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>parprdmcs.domain.rest.ProductoApp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>resteasy.servlet.mapping.prefix</param-name>
+            <param-value>/rest-producto</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>resteasy-servlet-categorias</servlet-name>
+        <servlet-class>
+            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+        </servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>parprdmcs.domain.categoria.CategoriaApp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>resteasy.servlet.mapping.prefix</param-name>
+            <param-value>/rest-categoria</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>resteasy-servlet-productos</servlet-name>
+        <url-pattern>/rest-producto/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>resteasy-servlet-categorias</servlet-name>
+        <url-pattern>/rest-categoria/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
